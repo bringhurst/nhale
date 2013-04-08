@@ -164,9 +164,12 @@ int main(int argc, char **argv)
       default:
         if(!card_index_flag)
         {
-          printf("There are multiple Nvidia cards detected on this machine.\n");
-          printf("Please use -i or --index to specify which card to use for operations\n");
-          return -1;
+          if(!list_flag)
+          {
+            printf("There are multiple Nvidia cards detected on this machine.\n");
+            printf("Please use -i or --index to specify which card to use for operations\n");
+            return -1;
+          }
         }
         if(card_index >= num_cards)
         {
